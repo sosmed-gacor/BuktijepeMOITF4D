@@ -719,6 +719,132 @@ background-position:300% center;
 
 </div>
   </div>
+   <div id="loader">
+    <div class="loader-content">
+
+        <img src="https://motifmekar.com/images/logoweb.png" class="loader-logo">
+
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+
+        <div class="loader-text">
+            LOADING<span class="dots"></span>
+        </div>
+
+    </div>
+</div>
+  <script>
+  const MIN_LOADING = 1800;
+
+const start = Date.now();
+
+window.onload = () => {
+
+    const elapsed = Date.now() - start;
+
+    const wait = Math.max(0, MIN_LOADING - elapsed);
+
+    setTimeout(() => {
+
+        document.getElementById("loader").classList.add("hide");
+
+    }, wait);
+
+};
+  </script>
+<style>
+  /* ===========================
+   LOADING SCREEN
+=========================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center,#06283d,#010b16);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    transition:.7s ease;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-content{
+    width:280px;
+    text-align:center;
+}
+
+.loader-logo{
+    width:210px;
+    margin-bottom:35px;
+    animation:float 2.8s ease-in-out infinite;
+    filter:drop-shadow(0 0 12px #27e8ff);
+}
+
+.loader-bar{
+    width:100%;
+    height:8px;
+    background:rgba(255,255,255,.12);
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.loader-progress{
+    width:0%;
+    height:100%;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00d9ff,#00ffe1,#00d9ff);
+    background-size:200% 100%;
+    animation:
+    loading 2.3s forwards,
+    shine 1.5s linear infinite;
+}
+
+.loader-text{
+    margin-top:18px;
+    color:#7ef7ff;
+    letter-spacing:5px;
+    font-size:13px;
+    font-weight:700;
+    text-shadow:0 0 10px #00f0ff;
+}
+
+.dots::after{
+    content:"";
+    animation:dots 1.2s infinite;
+}
+
+@keyframes loading{
+    from{width:0%;}
+    to{width:100%;}
+}
+
+@keyframes shine{
+    from{background-position:0 0;}
+    to{background-position:200% 0;}
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+@keyframes dots{
+    0%{content:"";}
+    25%{content:".";}
+    50%{content:"..";}
+    100%{content:"...";}
+}
+  </style>
 <!-- Jumpscare Overlay -->
 <div id="jumpscare">
     <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjSuuJqpibWPXrWYyiskpwy6rnx9FCYcQjtxJ0_PHU7KqXIdm_XcyDLUpbJzT509HCNOrcSKHzQiWnBOftivsF4_YU7pgbC4YRvSdyHIGQsq4g50VFwPyufegHLR9-CGceGwIhyhF3h8QYwpjvbRnQgDH6Euw6AYs7P54tZT5cU5f7XvqqcjJAENS8fXEY3" alt="Scary">
